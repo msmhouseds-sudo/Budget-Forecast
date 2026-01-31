@@ -264,6 +264,7 @@
                                 </section>
                                 <section>
                                     <h2 className="font-black text-2xl uppercase tracking-tight text-rose-800 mb-6">Expense Rules</h2>
+                                    <button onClick={() => addItem('expense')} className="mb-6 bg-rose-600 px-5 py-2.5 rounded-xl text-white text-xs font-black">+ Add Expense</button>
                                     <div className="space-y-3">
                                         {items.filter(i => i.type === 'expense').map(i => (<StandingItemRow key={i.id} item={i} onUpdate={(id,f,v) => save(items.map(x=>x.id===id?{...x,[f]:v}:x))} onRemove={() => save(items.filter(x=>x.id!==i.id))} days={['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']} cats={[...Object.keys(CATEGORY_MAP), ...customCats]} colorFunc={getCatColor} />))}
                                         <div ref={expenseListEndRef} className="pt-2"><button onClick={() => addItem('expense')} className="w-full border-2 border-dashed border-stone-200 rounded-[2rem] py-6 text-stone-400 font-black uppercase text-[10px] tracking-widest">+ Add New Rule</button></div>
@@ -339,7 +340,7 @@
                                                                 </p>
                                                             </div>
                                                             <div className="flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded-xl border border-stone-100">
-                                                                <span className="text-stone-400 font-bold text-xs">$</span>
+                                                                <span className="text-stone-400 font-bold">$</span>
                                                                 <input type="number" className={`w-20 font-black text-right bg-transparent outline-none ${i.type === 'income' ? 'text-emerald-600' : 'text-rose-600'}`} value={i.amount || ''} onChange={(e) => {
                                                                     const newO = { ...overrides, [i.key]: { ...(overrides[i.key] || {}), amount: e.target.value } };
                                                                     save(undefined, undefined, newO);
