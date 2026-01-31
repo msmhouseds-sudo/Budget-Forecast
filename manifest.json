@@ -1,0 +1,16 @@
+{
+  "short_name": "BudgetPro",
+  "name": "Budget Forecast Pro",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2654/2654504.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#0ea5e9",
+  "background_color": "#fdfaf5"
+}
