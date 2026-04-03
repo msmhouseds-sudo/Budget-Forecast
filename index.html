@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Forecast Pro</title>
-  
+   
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-  
+   
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background-color: #fdfaf5; }
@@ -29,7 +29,7 @@
     <script type="text/babel">
         // --- Utilities ---
         const ANCHOR_DATE = new Date(2026, 0, 9, 0, 0, 0, 0);
-      
+       
         const toDateStr = (date) => {
             const y = date.getFullYear();
             const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -116,7 +116,7 @@
                     return val !== null ? val : fallback;
                 } catch(e) { return fallback; }
             };
-           
+            
             const safeSet = (key, val) => {
                 try { localStorage.setItem(key, val); } catch(e) {}
             };
@@ -124,7 +124,7 @@
             const [tab, setTab] = React.useState(() => safeGet('bfp_activeTab', 'list'));
             const [analyticsView, setAnalyticsView] = React.useState('period');
             const [viewMode, setViewMode] = React.useState(() => safeGet('bfp_viewMode', 'biweekly'));
-          
+           
             const safeParse = (key, fallback) => {
                 try {
                     const item = localStorage.getItem(key);
@@ -212,7 +212,7 @@
                     let curr = new Date(scanStart);
                     const itemEnd = item.endDate ? parseDate(item.endDate) : null;
                     const itemRef = item.ref ? parseDate(item.ref) : null;
-                  
+                   
                     while (curr <= scanEnd) {
                         if (itemEnd && curr > itemEnd) break;
                         let hit = false;
@@ -362,7 +362,7 @@
                                             </div>
                                             <button onClick={() => navigatePeriod(1)} className="p-2.5 hover:bg-white hover:shadow-sm rounded-xl transition-all text-sky-900 active:scale-90"><Icon name="chevron-right" size={20} /></button>
                                         </div>
-                                      
+                                       
                                         <div className="flex-1 grid grid-cols-3 gap-2 w-full md:max-w-md">
                                             <div className="bg-emerald-50 p-3 rounded-2xl text-center border border-emerald-100 min-h-[54px]">
                                                 <span className="block text-[8px] font-black text-emerald-500 uppercase tracking-wider">Income</span>
@@ -380,7 +380,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                  
+                                   
                                     <div className="grid grid-cols-3 gap-2 pt-4 border-t border-stone-100 text-center">
                                         <div className="bg-stone-50 p-3 rounded-2xl"><span className="block text-[9px] font-black text-sky-400 uppercase">Paid</span><span className="text-sky-700 font-black text-sm">${currentTotals.paid.toLocaleString()}</span></div>
                                         <div className="bg-stone-50 p-3 rounded-2xl"><span className="block text-[9px] font-black text-amber-400 uppercase">Sched</span><span className="text-amber-700 font-black text-sm">${currentTotals.scheduled.toLocaleString()}</span></div>
